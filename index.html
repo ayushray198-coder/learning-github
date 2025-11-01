@@ -1,1 +1,254 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HTML Complete Reference — Full Tags (Stylish)</title>
+  <style>
+    /* ---- Base / Layout ---- */
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#4f46e5; --glass: rgba(255,255,255,0.03);
+      --table-bg: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      --radius:12px; --gap:18px; --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:24px; font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; background:radial-gradient(circle at 10% 10%, rgba(79,70,229,0.07), transparent 10%), linear-gradient(180deg,#071026 0%, #071429 100%); color:#e6eef8;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; line-height:1.45;
+    }
+    header{display:flex;gap:12px;align-items:baseline; margin-bottom:18px}
+    h1{font-size:20px; margin:0; color:var(--accent)}
+    p.lead{margin:0;color:var(--muted)}
 
+    /* ---- Container ---- */
+    .wrap{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:1000px){.wrap{grid-template-columns:1fr 1fr}}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid rgba(255,255,255,0.03); padding:16px;border-radius:var(--radius);box-shadow:0 6px 30px rgba(2,6,23,0.6)}
+
+    /* ---- Section header ---- */
+    .section-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+    .badge{background:var(--glass);color:var(--accent);padding:6px 10px;border-radius:999px;font-weight:600}
+    h2{margin:0;font-size:15px}
+
+    /* ---- Table ---- */
+    table{width:100%;border-collapse:collapse;background:var(--table-bg); border-radius:10px;overflow:hidden}
+    thead th{background:linear-gradient(90deg, rgba(79,70,229,0.12), rgba(15,23,36,0.06)); color: #dbeafe; font-weight:700; padding:10px 12px; text-align:left; font-size:13px}
+    tbody td{padding:10px 12px; border-top:1px solid rgba(255,255,255,0.02); vertical-align:top; font-size:13px; color:#d6e6ff}
+    tbody tr:nth-child(even){background:rgba(255,255,255,0.01)}
+    tbody tr:hover{background:rgba(79,70,229,0.04)}
+    code{background:rgba(255,255,255,0.03); padding:3px 6px; border-radius:6px; font-family:var(--mono); color:#ffdf7a}
+    .muted{color:var(--muted); font-size:12px}
+
+    /* ---- Footer ---- */
+    footer{margin-top:18px;text-align:center;color:var(--muted); font-size:13px}
+
+    /* ---- Utility ---- */
+    .note{font-size:12px;color:var(--muted);margin-top:8px}
+    .cols{display:grid;grid-template-columns:1fr;gap:12px}
+    @media(min-width:1000px){.cols{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>HTML Complete Reference</h1>
+      <p class="lead">Har tag ka short description + example — beginner se advanced tak. (HTML5 focus; deprecated tags bhi note kiye gaye)</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Document & Metadata -->
+    <section class="card">
+      <div class="section-head"><span class="badge">1</span><h2>Document &amp; Metadata</h2></div>
+      <table>
+        <thead><tr><th>Tag</th><th>What it does (1-line)</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>&lt;!doctype&gt;</code></td><td>Document type declaration — HTML5 start</td><td><code>&lt;!doctype html&gt;</code></td></tr>
+          <tr><td><code>&lt;html&gt;</code></td><td>Root element; use <code>lang</code> attribute</td><td><code>&lt;html lang="hi"&gt;</code></td></tr>
+          <tr><td><code>&lt;head&gt;</code></td><td>Contains metadata, links, scripts, title</td><td><code>&lt;head&gt;...&lt;/head&gt;</code></td></tr>
+          <tr><td><code>&lt;meta&gt;</code></td><td>Metadata: charset, viewport, description, etc. (void)</td><td><code>&lt;meta charset="utf-8"&gt;</code></td></tr>
+          <tr><td><code>&lt;title&gt;</code></td><td>Page title shown in browser tab</td><td><code>&lt;title&gt;My Page&lt;/title&gt;</code></td></tr>
+          <tr><td><code>&lt;base&gt;</code></td><td>Base URL for relative links (void)</td><td><code>&lt;base href="/app/"&gt;</code></td></tr>
+          <tr><td><code>&lt;link&gt;</code></td><td>External resource link (CSS, icons) (void)</td><td><code>&lt;link rel="stylesheet" href="app.css"&gt;</code></td></tr>
+          <tr><td><code>&lt;style&gt;</code></td><td>Embedded CSS</td><td><code>&lt;style&gt;body{margin:0}&lt;/style&gt;</code></td></tr>
+          <tr><td><code>&lt;script&gt;</code></td><td>JavaScript; can use <code>async/defer</code></td><td><code>&lt;script src="app.js" defer&gt;&lt;/script&gt;</code></td></tr>
+          <tr><td><code>&lt;noscript&gt;</code></td><td>Shown if JS disabled</td><td><code>&lt;noscript&gt;Enable JS&lt;/noscript&gt;</code></td></tr>
+          <tr><td><code>&lt;meta name="viewport"&gt;</code></td><td>Makes page responsive on mobile</td><td><code>&lt;meta name="viewport" content="width=device-width,initial-scale=1"&gt;</code></td></tr>
+          <tr><td><code>&lt;meta name="description"&gt;</code></td><td>SEO description for search engines</td><td><code>&lt;meta name="description" content="About page"&gt;</code></td></tr>
+          <tr><td><code>&lt;template&gt;</code></td><td>Client-side template (not rendered until used)</td><td><code>&lt;template&gt;&lt;div&gt;Hello&lt;/div&gt;&lt;/template&gt;</code></td></tr>
+          <tr><td><code>&lt;slot&gt;</code></td><td>Web components insertion point</td><td><code>&lt;slot name="x"&gt;&lt;/slot&gt;</code></td></tr>
+          <tr><td><code>&lt;meta charset&gt;</code></td><td>Character encoding (utf-8 common)</td><td><code>&lt;meta charset="utf-8"&gt;</code></td></tr>
+        </tbody>
+      </table>
+      <p class="note">Tip: head me unnecessary large scripts avoid karo; CSS &lt;link&gt; ko head me, JS ko body end ya <code>defer</code> se rakho.</p>
+    </section>
+
+    <!-- Content & Sectioning -->
+    <section class="card">
+      <div class="section-head"><span class="badge">2</span><h2>Content &amp; Sectioning</h2></div>
+      <div class="cols">
+        <div>
+          <table>
+            <thead><tr><th>Tag</th><th>Use</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><code>&lt;header&gt;</code></td><td>Intro/header of page or section</td><td><code>&lt;header&gt;&lt;h1&gt;Site&lt;/h1&gt;&lt;/header&gt;</code></td></tr>
+              <tr><td><code>&lt;nav&gt;</code></td><td>Navigation links</td><td><code>&lt;nav&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/nav&gt;</code></td></tr>
+              <tr><td><code>&lt;main&gt;</code></td><td>Main page content (one per page)</td><td><code>&lt;main&gt;...&lt;/main&gt;</code></td></tr>
+              <tr><td><code>&lt;section&gt;</code></td><td>Logical section of content</td><td><code>&lt;section&gt;Features&lt;/section&gt;</code></td></tr>
+              <tr><td><code>&lt;article&gt;</code></td><td>Independent content (blog post)</td><td><code>&lt;article&gt;&lt;h2&gt;Post&lt;/h2&gt;&lt;/article&gt;</code></td></tr>
+              <tr><td><code>&lt;aside&gt;</code></td><td>Sidebar / tangential content</td><td><code>&lt;aside&gt;Related&lt;/aside&gt;</code></td></tr>
+              <tr><td><code>&lt;footer&gt;</code></td><td>Footer for section/page</td><td><code>&lt;footer&gt;© 2025&lt;/footer&gt;</code></td></tr>
+              <tr><td><code>&lt;h1&gt;— &lt;h6&gt;</code></td><td>Headings (h1 highest)</td><td><code>&lt;h1&gt;Heading&lt;/h1&gt;</code></td></tr>
+              <tr><td><code>&lt;p&gt;</code></td><td>Paragraph</td><td><code>&lt;p&gt;Text&lt;/p&gt;</code></td></tr>
+              <tr><td><code>&lt;br&gt;</code></td><td>Line break (void)</td><td><code>&lt;p&gt;Line1&lt;br&gt;Line2&lt;/p&gt;</code></td></tr>
+              <tr><td><code>&lt;hr&gt;</code></td><td>Horizontal rule / thematic break (void)</td><td><code>&lt;hr&gt;</code></td></tr>
+              <tr><td><code>&lt;figure&gt;</code></td><td>Media with caption</td><td><code>&lt;figure&gt;&lt;img&gt;&lt;figcaption&gt;Caption&lt;/figure&gt;</code></td></tr>
+              <tr><td><code>&lt;figcaption&gt;</code></td><td>Caption for figure</td><td><code>&lt;figcaption&gt;Image caption&lt;/figcaption&gt;</code></td></tr>
+              <tr><td><code>&lt;blockquote&gt;</code></td><td>Long quotation</td><td><code>&lt;blockquote&gt;Quote&lt;/blockquote&gt;</code></td></tr>
+              <tr><td><code>&lt;q&gt;</code></td><td>Inline short quotation</td><td><code>&lt;p&gt;&lt;q&gt;said&lt;/q&gt;&lt;/p&gt;</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div>
+          <table>
+            <thead><tr><th>Inline / Text-level</th><th>Use</th><th>Example</th></tr></thead>
+            <tbody>
+              <tr><td><code>&lt;a&gt;</code></td><td>Hyperlink</td><td><code>&lt;a href="https://example.com"&gt;Link&lt;/a&gt;</code></td></tr>
+              <tr><td><code>&lt;img&gt;</code></td><td>Image (void) — include <code>alt</code></td><td><code>&lt;img src="a.jpg" alt="desc"&gt;</code></td></tr>
+              <tr><td><code>&lt;picture&gt;</code></td><td>Responsive images (with &lt;source&gt;)</td><td><code>&lt;picture&gt;&lt;source&gt;&lt;img&gt;&lt;/picture&gt;</code></td></tr>
+              <tr><td><code>&lt;source&gt;</code></td><td>Media source (inside picture/audio/video)</td><td><code>&lt;source srcset="a.webp" type="image/webp"&gt;</code></td></tr>
+              <tr><td><code>&lt;figcaption&gt;</code></td><td>Caption for figure</td><td><code>&lt;figcaption&gt;...&lt;/figcaption&gt;</code></td></tr>
+              <tr><td><code>&lt;em&gt;</code></td><td>Emphasize (semantic italics)</td><td><code>&lt;em&gt;note&lt;/em&gt;</code></td></tr>
+              <tr><td><code>&lt;strong&gt;</code></td><td>Strong importance (semantic bold)</td><td><code>&lt;strong&gt;Important&lt;/strong&gt;</code></td></tr>
+              <tr><td><code>&lt;small&gt;</code></td><td>Fine print / small text</td><td><code>&lt;small&gt;Note&lt;/small&gt;</code></td></tr>
+              <tr><td><code>&lt;mark&gt;</code></td><td>Highlighted text</td><td><code>&lt;mark&gt;Highlight&lt;/mark&gt;</code></td></tr>
+              <tr><td><code>&lt;del&gt;</code></td><td>Deleted / removed text (shows strike)</td><td><code>&lt;del&gt;old&lt;/del&gt;</code></td></tr>
+              <tr><td><code>&lt;ins&gt;</code></td><td>Inserted / added text</td><td><code>&lt;ins&gt;new&lt;/ins&gt;</code></td></tr>
+              <tr><td><code>&lt;sub&gt; / &lt;sup&gt;</code></td><td>Subscript / Superscript</td><td><code>H&lt;sub&gt;2&lt;/sub&gt;O</code></td></tr>
+              <tr><td><code>&lt;abbr&gt;</code></td><td>Abbreviation with optional title</td><td><code>&lt;abbr title="World Health Organization"&gt;WHO&lt;/abbr&gt;</code></td></tr>
+              <tr><td><code>&lt;time&gt;</code></td><td>Machine-readable time</td><td><code>&lt;time datetime="2025-11-01"&gt;Nov 1, 2025&lt;/time&gt;</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="note">Semantic tags help accessibility and SEO — prefer &lt;article&gt;/&lt;section&gt; over generic &lt;div&gt; when content has meaning.</p>
+    </section>
+
+    <!-- Forms & Input -->
+    <section class="card">
+      <div class="section-head"><span class="badge">3</span><h2>Forms, Input &amp; Controls</h2></div>
+      <table>
+        <thead><tr><th>Tag / Attribute</th><th>What it does</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>&lt;form&gt;</code></td><td>Groups inputs; has <code>action</code> and <code>method</code></td><td><code>&lt;form action="/" method="post"&gt;</code></td></tr>
+          <tr><td><code>&lt;input&gt;</code></td><td>Single-line form control (void). Types: text,password,email,number,checkbox,radio,file,hidden,submit,reset,search,url,tel,date,datetime-local,range,color</td><td><code>&lt;input type="email" name="e" required&gt;</code></td></tr>
+          <tr><td><code>&lt;textarea&gt;</code></td><td>Multi-line text input</td><td><code>&lt;textarea name="msg" rows="4"&gt;&lt;/textarea&gt;</code></td></tr>
+          <tr><td><code>&lt;select&gt;</code></td><td>Dropdown select with &lt;option&gt;</td><td><code>&lt;select&gt;&lt;option&gt;1&lt;/option&gt;&lt;/select&gt;</code></td></tr>
+          <tr><td><code>&lt;option&gt;</code></td><td>Option inside select</td><td><code>&lt;option value="1" selected&gt;One&lt;/option&gt;</code></td></tr>
+          <tr><td><code>&lt;label&gt;</code></td><td>Label for input (for accessibility)</td><td><code>&lt;label for="email"&gt;Email&lt;/label&gt;</code></td></tr>
+          <tr><td><code>&lt;button&gt;</code></td><td>Clickable button; types: submit,reset,button</td><td><code>&lt;button type="submit"&gt;Send&lt;/button&gt;</code></td></tr>
+          <tr><td><code>&lt;fieldset&gt; &lt;legend&gt;</code></td><td>Group related inputs</td><td><code>&lt;fieldset&gt;&lt;legend&gt;Address&lt;/legend&gt;&lt;/fieldset&gt;</code></td></tr>
+          <tr><td><code>&lt;datalist&gt;</code></td><td>Autocomplete options for inputs</td><td><code>&lt;input list="browsers"&gt;&lt;datalist id="browsers"&gt;&lt;option&gt;Chrome&lt;/datalist&gt;</code></td></tr>
+          <tr><td><code>&lt;output&gt;</code></td><td>Display result of a calculation (JS)</td><td><code>&lt;output name="result"&gt;42&lt;/output&gt;</code></td></tr>
+          <tr><td><code>&lt;label&gt;</code></td><td>Clickable label – associates with input via <code>for</code></td><td><code>&lt;label for="id"&gt;Name&lt;/label&gt;&lt;input id="id"&gt;</code></td></tr>
+          <tr><td><code>required, placeholder, pattern, minlength, maxlength, disabled, readonly, autocomplete</code></td><td>Common input attributes for validation and UX</td><td><code>&lt;input required placeholder="Enter"&gt;</code></td></tr>
+        </tbody>
+      </table>
+      <p class="note">Use HTML validation attributes first (required, pattern) and then enhance with JS for better UX.</p>
+    </section>
+
+    <!-- Media & Graphics -->
+    <section class="card">
+      <div class="section-head"><span class="badge">4</span><h2>Media &amp; Graphics</h2></div>
+      <table>
+        <thead><tr><th>Tag</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>&lt;audio&gt;</code></td><td>Audio playback (<code>controls</code>, <code>autoplay</code>)</td><td><code>&lt;audio controls&gt;&lt;source src="song.mp3" type="audio/mpeg"&gt;&lt;/audio&gt;</code></td></tr>
+          <tr><td><code>&lt;video&gt;</code></td><td>Video playback</td><td><code>&lt;video controls width="640"&gt;&lt;source&gt;&lt;/video&gt;</code></td></tr>
+          <tr><td><code>&lt;track&gt;</code></td><td>Subtitles / captions for media</td><td><code>&lt;track kind="subtitles" src="en.vtt" srclang="en"&gt;</code></td></tr>
+          <tr><td><code>&lt;canvas&gt;</code></td><td>Bitmap drawing surface (JS)</td><td><code>&lt;canvas id="c" width="300" height="150"&gt;&lt;/canvas&gt;</code></td></tr>
+          <tr><td><code>&lt;svg&gt;</code></td><td>Vector graphics (XML)</td><td><code>&lt;svg viewBox="0 0 10 10"&gt;&lt;circle/&gt;&lt;/svg&gt;</code></td></tr>
+          <tr><td><code>&lt;map&gt;</code></td><td>Image map (with &lt;area&gt;)</td><td><code>&lt;map name="m"&gt;&lt;area shape="rect"&gt;&lt;/map&gt;</code></td></tr>
+          <tr><td><code>&lt;area&gt;</code></td><td>Clickable region inside &lt;map&gt;</td><td><code>&lt;area shape="rect" coords="0,0,50,50" href="#"&gt;</code></td></tr>
+          <tr><td><code>&lt;picture&gt; &lt;source&gt;</code></td><td>Responsive images with fallbacks</td><td><code>&lt;picture&gt;&lt;source type="image/avif" srcset="a.avif"&gt;&lt;img src="a.jpg" alt&gt;&lt;/picture&gt;</code></td></tr>
+          <tr><td><code>&lt;img&gt;</code></td><td>Images (use <code>alt</code>)</td><td><code>&lt;img src="img.jpg" alt="desc"&gt;</code></td></tr>
+        </tbody>
+      </table>
+      <p class="note">Always provide captions/subtitles for accessibility; compress media for performance.</p>
+    </section>
+
+    <!-- Scripting, APIs & Editing -->
+    <section class="card">
+      <div class="section-head"><span class="badge">5</span><h2>Scripting, Web Components &amp; APIs</h2></div>
+      <table>
+        <thead><tr><th>Tag / Feature</th><th>What it does</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>&lt;script&gt;</code></td><td>Embed or link JS; supports <code>type="module"</code>, <code>defer</code>, <code>async</code></td><td><code>&lt;script type="module" src="app.js"&gt;&lt;/script&gt;</code></td></tr>
+          <tr><td><code>&lt;noscript&gt;</code></td><td>Fallback content when JS disabled</td><td><code>&lt;noscript&gt;Enable JS&lt;/noscript&gt;</code></td></tr>
+          <tr><td><code>&lt;template&gt;</code></td><td>Client-side HTML template</td><td><code>&lt;template&gt;&lt;div&gt;Hi&lt;/div&gt;&lt;/template&gt;</code></td></tr>
+          <tr><td><code>&lt;slot&gt;</code></td><td>Web component insertion point</td><td><code>&lt;slot name="x"&gt;&lt;/slot&gt;</code></td></tr>
+          <tr><td><code>contenteditable</code></td><td>Attribute to make element editable</td><td><code>&lt;div contenteditable&gt;Edit me&lt;/div&gt;</code></td></tr>
+          <tr><td><code>&lt;iframe&gt;</code></td><td>Embed another page (sandbox for security)</td><td><code>&lt;iframe src="https://example.com"&gt;&lt;/iframe&gt;</code></td></tr>
+        </tbody>
+      </table>
+      <p class="note">Use <code>type="module"</code> for modern JS; prefer safe sandboxing for iframes (<code>sandbox</code> attribute).</p>
+    </section>
+
+    <!-- Tables, Lists & Data -->
+    <section class="card">
+      <div class="section-head"><span class="badge">6</span><h2>Tables, Lists &amp; Flow</h2></div>
+      <table>
+        <thead><tr><th>Tag</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>&lt;ul&gt; &lt;ol&gt; &lt;li&gt;</code></td><td>Lists (unordered/ordered)</td><td><code>&lt;ul&gt;&lt;li&gt;Item&lt;/li&gt;&lt;/ul&gt;</code></td></tr>
+          <tr><td><code>&lt;dl&gt; &lt;dt&gt; &lt;dd&gt;</code></td><td>Definition list (term/definition)</td><td><code>&lt;dl&gt;&lt;dt&gt;HTML&lt;/dt&gt;&lt;dd&gt;Markup&lt;/dd&gt;&lt;/dl&gt;</code></td></tr>
+          <tr><td><code>&lt;table&gt;</code></td><td>Tabular data container</td><td><code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</code></td></tr>
+          <tr><td><code>&lt;thead&gt; &lt;tbody&gt; &lt;tfoot&gt; &lt;tr&gt; &lt;th&gt; &lt;td&gt;</code></td><td>Table sections & cells</td><td><code>&lt;thead&gt;&lt;tr&gt;&lt;th&gt;H&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;</code></td></tr>
+          <tr><td><code>&lt;caption&gt;</code></td><td>Table caption for accessibility</td><td><code>&lt;caption&gt;Sales&lt;/caption&gt;</code></td></tr>
+        </tbody>
+      </table>
+      <p class="note">For data tables include captions and scope attributes on &lt;th&gt; for screen-readers.</p>
+    </section>
+
+    <!-- Deprecated & Obsolete -->
+    <section class="card">
+      <div class="section-head"><span class="badge">7</span><h2>Deprecated / Obsolete (avoid)</h2></div>
+      <table>
+        <thead><tr><th>Tag</th><th>Why deprecated</th><th>Alternative</th></tr></thead>
+        <tbody>
+          <tr><td><code>&lt;font&gt;</code></td><td>Presentational; use CSS</td><td><code>CSS color/font-family</code></td></tr>
+          <tr><td><code>&lt;center&gt;</code></td><td>Use CSS <code>text-align</code></td><td><code>CSS: text-align:center</code></td></tr>
+          <tr><td><code>&lt;bgsound&gt;</code></td><td>Obsolete audio autoplay</td><td><code>&lt;audio&gt;</code></td></tr>
+          <tr><td><code>&lt;marquee&gt;</code></td><td>Non-standard scrolling text</td><td>CSS animations</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Avoid these in modern code — use CSS/JS equivalents.</p>
+    </section>
+
+    <!-- Misc, Utilities & Newer Tags -->
+    <section class="card">
+      <div class="section-head"><span class="badge">8</span><h2>Misc, Utilities &amp; Newer HTML Tags</h2></div>
+      <table>
+        <thead><tr><th>Tag</th><th>Use</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td><code>&lt;dialog&gt;</code></td><td>Native modal dialog element</td><td><code>&lt;dialog&gt;Hello&lt;/dialog&gt;</code></td></tr>
+          <tr><td><code>&lt;details&gt; &lt;summary&gt;</code></td><td>Disclosure widget (toggle)</td><td><code>&lt;details&gt;&lt;summary&gt;More&lt;/summary&gt;&lt;/details&gt;</code></td></tr>
+          <tr><td><code>&lt;template&gt;</code></td><td>Reusable template (not rendered)</td><td><code>&lt;template&gt;...&lt;/template&gt;</code></td></tr>
+          <tr><td><code>&lt;meter&gt;</code></td><td>Scalar measurement (e.g., disk usage)</td><td><code>&lt;meter value="0.6"&gt;</code></td></tr>
+          <tr><td><code>&lt;progress&gt;</code></td><td>Progress bar for tasks</td><td><code>&lt;progress value="60" max="100"&gt;</code></td></tr>
+          <tr><td><code>&lt;output&gt;</code></td><td>Result of a calculation</td><td><code>&lt;output name="r"&gt;42&lt;/output&gt;</code></td></tr>
+          <tr><td><code>&lt;picture&gt;</code></td><td>Advanced responsive images</td><td><code>&lt;picture&gt;...&lt;/picture&gt;</code></td></tr>
+        </tbody>
+      </table>
+      <p class="note">Newer tags aim to reduce JS for simple UI — use them when possible.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    Tip: Copy this HTML file, open in browser and use it as reference. Koi aur style (light/dark/print) chahiye to batao — main aur tweaks kar dunga.
+  </footer>
+</body>
+</html>
